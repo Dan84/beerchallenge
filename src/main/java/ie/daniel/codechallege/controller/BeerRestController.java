@@ -28,7 +28,13 @@ BeerRepository beerRepository;
 		return beerRepository.findOne(id);
 	}
 	
-	
+	@RequestMapping("/random")
+	public Beer randomBeer(){
+		
+		Random random = new Random();		
+		Beer beer = beerRepository.findOne(random.nextInt(beerRepository.findAll().size())+1);		
+		return beer;		
+	}
 	
 	
 
