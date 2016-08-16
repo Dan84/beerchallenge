@@ -15,7 +15,7 @@ import javax.persistence.Table;
 		private Integer id;
 		private String name;
 		private String description;
-		private double percentage;
+		private Double percentage;
 		private String location;	
 		
 		
@@ -24,14 +24,14 @@ import javax.persistence.Table;
 			
 		}
 		
-		public Beer(Integer id, String name, String description, double percentage, String location) {
+		/*public Beer(String name, String description, Double percentage, String location) {
 			
-			this.id = id;
+			
 			this.name = name;
 			this.description = description;
 			this.percentage = percentage;
 			this.location = location;
-		}
+		}*/
 		
 		public String getName() {
 			return name;
@@ -45,10 +45,10 @@ import javax.persistence.Table;
 		public void setDescription(String description) {
 			this.description = description;
 		}
-		public double getPercentage() {
+		public Double getPercentage() {
 			return percentage;
 		}
-		public void setPercentage(double percentage) {
+		public void setPercentage(Double percentage) {
 			this.percentage = percentage;
 		}
 		public String getLocation() {
@@ -57,7 +57,10 @@ import javax.persistence.Table;
 		public void setLocation(String location) {
 			this.location = location;
 		}
-		public int getId() {
+		public void setId(Integer id) {
+			this.id = id;
+		}
+		public Integer getId() {
 			return id;
 		}
 		
