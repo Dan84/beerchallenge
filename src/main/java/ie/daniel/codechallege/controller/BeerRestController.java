@@ -50,21 +50,28 @@ BeerRepository beerRepository;
             
             return e.getMessage();
         }
-        return "creation successful: " + String.valueOf(beer.getId());
+        return "creation successful";
     }
 	
 	
 	//UPDATE BEER
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.ACCEPTED)
-	public Beer update(@PathVariable Integer id, @RequestBody Beer beerIn) {
+	public String updateBeer(@PathVariable Integer id, @RequestBody Beer beerIn) {
 	    Beer beer = beerRepository.findOne(id);
 	    beer.setName(beerIn.getName());
 	    beer.setDescription(beerIn.getDescription());
 	    beer.setPercentage(beerIn.getPercentage());
 	    beer.setLocation(beerIn.getLocation());
-	   
-	    return beerRepository.save(beer);
+	    
+	    try {
+	    	beerRepository.save(beer);
+        } catch (Exception e) {
+            
+            return e.getMessage();
+        }
+        return "Updated successfully";
+	     
 	  }
 	
 	
@@ -82,6 +89,8 @@ BeerRepository beerRepository;
 	
 	
 	//FIND RANDOM BEER
+	//This method is not used when app is run in the browser with angular front end, random record is 
+	//retrieved from showBeer() method.
 	@RequestMapping(value = "/random", method = RequestMethod.GET)
 	public Beer randomBeer(){
 		
