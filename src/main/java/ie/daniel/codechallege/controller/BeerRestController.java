@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import ie.daniel.codechallege.model.Beer;
@@ -24,7 +27,8 @@ BeerRepository beerRepository;
 	//FIND ALL 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Beer> listBeers(){
-		return  beerRepository.findAll();
+		
+		return beerRepository.findAll();
 	}
 	
 	
@@ -37,6 +41,7 @@ BeerRepository beerRepository;
 	
 	//ADD BEER
 	@RequestMapping(method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.CREATED)
 	public String createBeer(@RequestBody Beer beer) {
         
         try {
@@ -51,6 +56,7 @@ BeerRepository beerRepository;
 	
 	//UPDATE BEER
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
+	@ResponseStatus(value = HttpStatus.ACCEPTED)
 	public Beer update(@PathVariable Integer id, @RequestBody Beer beerIn) {
 	    Beer beer = beerRepository.findOne(id);
 	    beer.setName(beerIn.getName());
@@ -62,8 +68,9 @@ BeerRepository beerRepository;
 	  }
 	
 	
-	//DELETE BEER
+	//DELETE BEER	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
     public String deleteBeer(@PathVariable Integer id) {
         try {
             beerRepository.delete(id);

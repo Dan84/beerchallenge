@@ -1,0 +1,34 @@
+<div class="container" ng-controller="BeersController">
+
+   
+    
+
+    <div class="row col-md-12">
+        <table class="table table-hover table-striped  box-shadow--6dp" id = "beertable">
+            <thead>
+            	
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+                <th>Percentage</th>
+                <th></th>
+                <th>Location</th>
+                
+            </thead>
+            <tbody>
+                <tr ng-repeat="beer in beers">
+                    
+                    <td>{{beer.name}}</td>
+                    <td>{{beer.description}}<td>
+                    <td>{{beer.percentage}}<td>
+                    <td>{{beer.location}}<td>
+                    
+                    
+                    <td>
+                        <button type="button" class="btn btn-danger btn-xs" data-ng-click="deleteBeer(beer.id)">Delete <span class="glyphicon glyphicon-remove"></span></button>
+                    <td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

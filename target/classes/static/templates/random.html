@@ -1,0 +1,36 @@
+<div class="container" ng-controller="BeersController">
+
+    <div class="jumbotron">
+        <h1>Welcome to Random Beer</h1>
+        <p>Are you not sure which beer you want to drink tonight? Just click the button and let faith decide!!</p>
+    </div>
+    
+    
+   <button type="button" class="btn btn-warning btn-lg" data-ng-click="randomBeer()">Random Beer <span class="glyphicon glyphicon-glass"></span></button>
+
+
+<hr>
+
+<div class="row col-md-12">
+		
+        <table class="table table-hover table-striped  box-shadow--6dp" id = "beertable" ng-if="beer">
+            <thead>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+                <th>Percentage</th>
+                <th></th>
+                <th>Location</th>
+            </thead>
+            <tbody>
+                <tr >
+                    <td>{{beer.name}}</td>
+                    <td>{{beer.description}}<td>
+                    <td>{{beer.percentage}}<td>
+                    <td>{{beer.location}}<td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
