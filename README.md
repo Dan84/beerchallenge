@@ -13,7 +13,9 @@ Web application comprised of Java REST api and Angular.js front end.
   
   -MySQL
   
-  To run the application create a database in MySQL named randombeer, port is set to localhost:9090.
+  To set up the application create a database in MySQL named randombeer, port is set to localhost:9090. 
   
-  These settings can be changed inresources/application.properties along with database username and password.
+  These settings can be changed in resources/application.properties along with database username and password.
+  
+  Run as Java application.
 
